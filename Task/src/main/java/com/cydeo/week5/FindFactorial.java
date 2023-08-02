@@ -1,9 +1,14 @@
 package com.cydeo.week5;
 
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 public class FindFactorial {
     public static void main(String[] args) {
 
         System.out.println("factorial of 6 = " + findFactorial(6));
+        System.out.println("factorial of 6 = " + findFac(6));
+        System.out.println("factorial of 6 = " + factorial(6));
 
     }
     private static int findFactorial(int n) {
@@ -12,6 +17,21 @@ public class FindFactorial {
         }else{
              return findFactorial(n-1)*n;
         }
+    }
+
+    public static int findFac(int n){
+        return Stream.iterate(1, i->i+1).limit(n)
+                .reduce(1, (x, y) -> x * y);
+    }
+
+    public static int findFac2(int n){
+        return Stream.iterate(1, i->i<=n, i->i+1)
+                .reduce(1, (x, y) -> x * y);
+    }
+
+    public static int factorial(int num){
+        return IntStream.rangeClosed(1,num)
+                .reduce( (a,b) -> a*b ).getAsInt();
     }
 }
 

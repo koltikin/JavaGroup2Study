@@ -20,7 +20,7 @@ public class CountDistinct {
         String[] newInputStr = inputString.split("");
         //group them by value and collect to map
         Map<String, List<String>> groupedStr = Arrays.stream(newInputStr) // convert it to stream
-                .collect(Collectors.groupingBy(String::valueOf));
+                .collect(Collectors.groupingBy(s->s));
         long count = groupedStr.values().stream().filter(l->l.size()>=2).count();
         // iterate the map, check and count the char
 //        int count = 0;
