@@ -20,20 +20,21 @@ public class CountDistinct {
         String[] newInputStr = inputString.split("");
         //group them by value and collect to map
         Map<String, List<String>> groupedStr = Arrays.stream(newInputStr) // convert it to stream
-                .collect(Collectors.groupingBy(String::valueOf));
+                .collect(Collectors.groupingBy(s->s));
+        long count = groupedStr.values().stream().filter(l->l.size()>=2).count();
         // iterate the map, check and count the char
-        int count = 0;
-//        List<String> detail = new ArrayList<>();
-        for (String key : groupedStr.keySet()) {
-            int value = groupedStr.get(key).size();
-            if (value >= 2){
-                count++;
+//        int count = 0;
+//         List<String> detail = new ArrayList<>();
+//        for (String key : groupedStr.keySet()) {
+//            int value = groupedStr.get(key).size();
+//            if (value >= 2){
+//                count++;
 //                detail.add("'" + key + "'" + " occurred " + value + " times");
-            }
-        }
-//        System.out.println(detail);
+//            }
+//        }
+//          System.out.println(groupedStr);
 //        return count + " # -> : " + detail
-        return count;
+        return (int)(count);
     }
 
 }
