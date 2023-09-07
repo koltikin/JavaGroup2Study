@@ -7,6 +7,8 @@ public class FindMaxProfit {
         int[] prices = {10, 9, 4, 5, 7, 3,5};
 
         System.out.println(findMaxProfit1(prices));
+
+
     }
     private static int findMaxProfit(int[] prices) {
         if (prices.length < 2) {
@@ -18,18 +20,16 @@ public class FindMaxProfit {
                 if ((prices[j] - prices[i]) > maxProfit) {
                     maxProfit = (prices[j] - prices[i]);
                 }
-
             }
-
         }
-
         return maxProfit;
     }
+
+
     private static int findMaxProfit1(int[] prices) {
         if (prices.length < 2) {
             return 0;
         }
-
         int minPrice = prices[0];
         int maxProfit = 0;
 
