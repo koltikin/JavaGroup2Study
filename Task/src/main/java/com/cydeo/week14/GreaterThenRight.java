@@ -7,9 +7,8 @@ public class GreaterThenRight {
         int[] num = {0,10,4,9,6,3,5};
         System.out.println(Arrays.toString(findGraterThanRight(num)));
     }
-
-    private static int[] findGraterThanRight(int[] num) {
-       Stack<Integer> resultStack = new Stack<Integer>();
+    static int[] findGraterThanRight(int[] num) {
+       Stack<Integer> resultStack = new Stack<>();
         resultStack.push(num[0]);
         for (int i = 0; i < num.length-1; i++) {
             if (num[i+1]>num[i]){
@@ -21,10 +20,8 @@ public class GreaterThenRight {
             newNum[i] = resultStack.pop();
         }
         return newNum;
-        }
-
-
-    private static int[] findGraterThanRight1(int[] num) {
+    }
+    static int[] findGraterThanRight1(int[] num) {
         int j = 1;
         for (int i = 0; i < num.length-1; i++) {
             if (num[i+1]> num[i]) {
@@ -36,7 +33,6 @@ public class GreaterThenRight {
         System.arraycopy(num, 0, result, 0, j);
         return result;
     }
-
 }
 
 
