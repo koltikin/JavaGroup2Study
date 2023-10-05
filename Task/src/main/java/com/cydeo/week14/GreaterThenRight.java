@@ -5,35 +5,40 @@ import java.util.*;
 public class GreaterThenRight {
     public static void main(String[] args) {
         int[] num = {0,10,4,9,6,3,5};
-        System.out.println(Arrays.toString(findGraterThanRight(num)));
+        System.out.println(findGraterThanRight(num));
     }
-    static int[] findGraterThanRight(int[] num) {
-       Stack<Integer> resultStack = new Stack<>();
-        resultStack.push(num[0]);
-        for (int i = 0; i < num.length-1; i++) {
-            if (num[i+1]>num[i]){
-                resultStack.push(num[i+1]);
+    static Stack<Integer> findGraterThanRight(int[] num) {
+        Stack<Integer> mystack = new Stack<>();
+        for (int current : num) {
+            if (!mystack.isEmpty() && mystack.peek()<current){
+                mystack.pop();
             }
+            mystack.push(current);
+
         }
-        int[] newNum = new int[resultStack.size()];
-        for (int i = newNum.length - 1; i >= 0; i--) {
-            newNum[i] = resultStack.pop();
+            return mystack;
+
         }
-        return newNum;
-    }
     static int[] findGraterThanRight1(int[] num) {
-        int j = 1;
-        for (int i = 0; i < num.length-1; i++) {
-            if (num[i+1]> num[i]) {
-                num[j] = num[i+1];
-                j++;
+        Stack<Integer> mystack = new Stack<>();
+        mystack.push(num[num.length-1]);
+        for (int i = num.length - 1; i >= 0; i--) {
+            if (mystack.peek()<num[i]){
+                mystack.push(num[i]);
             }
+
         }
-        int[] result = new int[j];
-        System.arraycopy(num, 0, result, 0, j);
+        int[] result = new int[mystack.size()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = mystack.pop();
+        }
         return result;
-    }
+
+        }
+
 }
+
+
 
 
 /**
