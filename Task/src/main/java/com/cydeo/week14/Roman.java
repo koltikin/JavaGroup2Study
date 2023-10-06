@@ -1,6 +1,9 @@
 package com.cydeo.week14;
 
+import java.util.Deque;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Stack;
 
 public class Roman {
     public static void main(String[] args) {
@@ -12,7 +15,7 @@ public class Roman {
 //        System.out.println(romanToInt(s1));
 //        System.out.println(romanToInt(s2));
 //        System.out.println(romanToInt(s3));
-        System.out.println(romanToInt(s4));
+        System.out.println(romanToInt1(s4));
 
         char[] roman = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
 
@@ -37,6 +40,31 @@ public class Roman {
                 sum += rMap.get(arr[i]);
             }
             prevValue = rMap.get(arr[i]);
+        }
+        return sum;
+
+    }
+
+    public static int romanToInt1(String s) {
+
+        HashMap<Character, Integer> rMap = new HashMap<>();
+        rMap.put('I',1);
+        rMap.put('V',5);
+        rMap.put('X',10);
+        rMap.put('L',50);
+        rMap.put('C',100);
+        rMap.put('D',500);
+        rMap.put('M',1000);
+        char[] arr = s.toCharArray();
+        Deque<Integer> rStack = new LinkedList<>();
+        int sum = 0;
+        for (int i = arr.length - 1; i >=0; i--) {
+            if (!rStack.isEmpty() && rMap.get(arr[i])<rStack.peek()){
+                sum -= rMap.get(arr[i]);
+            }else {
+                sum += rMap.get(arr[i]);
+            }
+            rStack.push(rMap.get(arr[i]));
         }
         return sum;
 
