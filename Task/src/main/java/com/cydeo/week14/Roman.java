@@ -35,14 +35,14 @@ public class Roman {
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {
             sum += myMap.get(arr[i]);
-            if (i>0){
-                if (myMap.get(arr[i])>myMap.get(arr[i-1])){
-                    sum -= 2*myMap.get(arr[i-1]);
-                }
+            if (i>0 && myMap.get(arr[i])>myMap.get(arr[i-1])){
+                sum -= 2*myMap.get(arr[i-1]);
             }
         }
         return sum;
     }
+
+
     public static int romanToInt1(String s) {
 
         HashMap<Character, Integer> rMap = new HashMap<>();
