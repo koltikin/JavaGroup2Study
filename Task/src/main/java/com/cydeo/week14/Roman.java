@@ -15,12 +15,35 @@ public class Roman {
 //        System.out.println(romanToInt(s1));
 //        System.out.println(romanToInt(s2));
 //        System.out.println(romanToInt(s3));
-        System.out.println(romanToInt1(s4));
+        System.out.println(romanToInt(s4));
 
         char[] roman = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
 
     }
+
     public static int romanToInt(String s) {
+
+        HashMap<Character, Integer> myMap = new HashMap<>();
+        myMap.put('I',1);
+        myMap.put('V',5);
+        myMap.put('X',10);
+        myMap.put('L',50);
+        myMap.put('C',100);
+        myMap.put('D',500);
+        myMap.put('M',1000);
+        char[] arr = s.toCharArray();
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += myMap.get(arr[i]);
+            if (i>0){
+                if (myMap.get(arr[i])>myMap.get(arr[i-1])){
+                    sum -= 2*myMap.get(arr[i-1]);
+                }
+            }
+        }
+        return sum;
+    }
+    public static int romanToInt1(String s) {
 
         HashMap<Character, Integer> rMap = new HashMap<>();
         rMap.put('I',1);
@@ -44,28 +67,7 @@ public class Roman {
         return sum;
 
     }
-    public static int romanToInt1(String s) {
 
-        HashMap<Character, Integer> myMap = new HashMap<>();
-        myMap.put('I',1);
-        myMap.put('V',5);
-        myMap.put('X',10);
-        myMap.put('L',50);
-        myMap.put('C',100);
-        myMap.put('D',500);
-        myMap.put('M',1000);
-        char[] arr = s.toCharArray();
-        int sum = 0;
-        for (int i = 0; i < arr.length; i++) {
-            sum += myMap.get(arr[i]);
-            if (i>0){
-                if (myMap.get(arr[i])>myMap.get(arr[i-1])){
-                    sum -= 2*myMap.get(arr[i-1]);
-                }
-            }
-        }
-        return sum;
-    }
 
 
 }
