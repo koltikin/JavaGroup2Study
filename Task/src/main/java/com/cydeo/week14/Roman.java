@@ -44,30 +44,28 @@ public class Roman {
         return sum;
 
     }
-
     public static int romanToInt1(String s) {
 
-        HashMap<Character, Integer> rMap = new HashMap<>();
-        rMap.put('I',1);
-        rMap.put('V',5);
-        rMap.put('X',10);
-        rMap.put('L',50);
-        rMap.put('C',100);
-        rMap.put('D',500);
-        rMap.put('M',1000);
+        HashMap<Character, Integer> myMap = new HashMap<>();
+        myMap.put('I',1);
+        myMap.put('V',5);
+        myMap.put('X',10);
+        myMap.put('L',50);
+        myMap.put('C',100);
+        myMap.put('D',500);
+        myMap.put('M',1000);
         char[] arr = s.toCharArray();
-        Deque<Integer> rStack = new LinkedList<>();
         int sum = 0;
-        for (int i = arr.length - 1; i >=0; i--) {
-            if (!rStack.isEmpty() && rMap.get(arr[i])<rStack.peek()){
-                sum -= rMap.get(arr[i]);
-            }else {
-                sum += rMap.get(arr[i]);
+        for (int i = 0; i < arr.length; i++) {
+            sum += myMap.get(arr[i]);
+            if (i>0){
+                if (myMap.get(arr[i])>myMap.get(arr[i-1])){
+                    sum -= 2*myMap.get(arr[i-1]);
+                }
             }
-            rStack.push(rMap.get(arr[i]));
         }
         return sum;
-
     }
+
 
 }
