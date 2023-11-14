@@ -9,7 +9,6 @@ public class AlterCase {
 
         String inputPath = "Task/src/main/java/com/cydeo/week15/test.txt";
         String outputPath = "Task/src/main/java/com/cydeo/week15/result.txt";
-
         changeCase(inputPath,outputPath);
 
     }

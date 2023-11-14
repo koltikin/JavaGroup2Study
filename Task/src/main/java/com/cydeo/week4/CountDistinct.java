@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class CountDistinct {
     public static void main(String[] args) {
-        String inputString = "abcdabcd";
+        String inputString = "abcdabcdEe";
 
         int result = countDistinctChar(inputString);
         System.out.println(result);
